@@ -35,7 +35,7 @@ public class Main {
                     if (isLineValid(data)) {
                         String[] sdata = data.split(" ");
                         aircrafFactory.newAircraft(sdata[0], sdata[1], Integer.parseInt(sdata[2]), Integer.parseInt(sdata[3]), Integer.parseInt(sdata[4]));
-                        System.out.println("lol: " + data);
+                        // System.out.println("lol: " + data);
                     }
                 }
             }

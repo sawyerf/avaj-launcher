@@ -18,7 +18,7 @@ CLS = 		$(addprefix $(CLS_DIR)/,$(CLS_FILE))
 all: $(NAME)
 
 $(CLS_DIR)/%.class: $(SRC_DIR)/%.java
-	$(JC) -sourcepath $(SRC_DIR) -cp $(CLS_DIR) -d $(CLS_DIR) $<
+	@$(JC) -sourcepath $(SRC_DIR) -cp $(CLS_DIR) -d $(CLS_DIR) $<
 
 $(NAME): $(CLS)
 	@mkdir $(CLS_DIR) 2> /dev/null || true
@@ -28,11 +28,10 @@ run: $(NAME)
 	java -cp $(CLS_DIR) Main test.txt
 
 clean:
-	rm -rf $(CLS)
+	@rm -rf $(CLS)
 	@printf "\033[0;31m[$(NAME)] Deleted *.class\033[0;0m\n"
 
 fclean: clean
-	@printf "\033[0;31D[$(NAME)] Deleted 42sh\033[0;0m\n"
 
 re: fclean all
 
