@@ -1,9 +1,12 @@
 package Flyable;
 
-public class Helicopter {
+import Weather.WeatherTower;
+import Weather.Coordinates;
+
+public class Helicopter implements Flyable {
     private WeatherTower weatherTower;
 
-    public void Helicopter(String name, Coordinates coordinates) {
+    public Helicopter(String name, Coordinates coordinates) {
         
     }
 

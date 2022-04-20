@@ -1,9 +1,12 @@
 package Flyable;
 
-public class Baloon {
+import Weather.WeatherTower;
+import Weather.Coordinates;
+
+public class Baloon implements Flyable {
     private WeatherTower weatherTower;
 
-    public void Baloon(String name, Coordinates coordinates) {
+    public Baloon(String name, Coordinates coordinates) {
         
     }
 

@@ -1,14 +1,20 @@
-/*public class Aircraft {
+package Airport;
+
+import Weather.Coordinates;
+
+public class Aircraft {
     protected long id;
     protected String name;
     protected Coordinates coordinates;
-    private long idCounter;
+    private static long idCounter;
 
-    protected void Aircraft(String name, Coordinates coordinates) {
-
+    protected Aircraft(String name, Coordinates coordinates) {
+        this.name = name;
+        this.coordinates = coordinates;
+        this.id = nextId();
     }
 
     private long nextId() {
-        return idCounter;
+        return idCounter + 1;
     }
-}*/
+}

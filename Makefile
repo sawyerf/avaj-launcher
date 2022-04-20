@@ -4,8 +4,17 @@ JC =		javac
 
 SRC_DIR =	src
 
-SRC_FILE =	Main.java \
-			Airport/AircraftFactory.java
+SRC_FILE =	Main.java                    \
+			Airport/Aircraft.java        \
+			Airport/AircraftFactory.java \
+			Flyable/Flyable.java         \
+			Flyable/Helicopter.java      \
+			Flyable/JetPlane.java        \
+			Flyable/Baloon.java          \
+			Weather/Tower.java           \
+			Weather/WeatherTower.java    \
+			Weather/WeatherProvider.java \
+			Weather/Coordinates.java
 
 CLS_DIR  = .class
 CLS_FILE = $(SRC_FILE:.java=.class)

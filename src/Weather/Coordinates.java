@@ -5,10 +5,11 @@ public class Coordinates {
     private int latitude;
     private int height;
 
-    public void Coordinates(int longi, int lat, int hei) {
-        this.longitude = longi;
-        this.latitude  = lat;
-        this.height    = hei;
+    public Coordinates(int lon, int lat, int hei) {
+        longitude = lon;
+        latitude  = lat;
+        height    = hei;
+        System.out.println("Coordinates: " + longitude + " " + latitude + " " + height);
     }
 
     public int getLongitude() {

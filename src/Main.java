@@ -1,17 +1,35 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.util.*;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import Airport.AircraftFactory;
 
+import Flyable.Flyable;
+
 public class Main {
     private static Boolean isLineValid(String line) {
         return (Pattern.compile("^.+ .+ [0-9]+ [0-9]+ [0-9]+$", Pattern.CASE_INSENSITIVE)
             .matcher(line)
             .find());
+    }
+
+    private static void readLines(Scanner myReader) {
+        List<Flyable> flyables = new ArrayList<Flyable>();
+        
+        while (myReader.hasNextLine()) {
+            String data = myReader.nextLine();
+            AircraftFactory aircrafFactory = new AircraftFactory();
+            if (isLineValid(data)) {
+                String[] sdata = data.split(" ");
+                flyables.add(
+                    aircrafFactory.newAircraft(sdata[0], sdata[1], Integer.parseInt(sdata[2]), Integer.parseInt(sdata[3]), Integer.parseInt(sdata[4]))
+                );
+            }
+        }
     }
 
     private static void readFile(String fileName) {
@@ -29,15 +47,7 @@ public class Main {
                     myReader.close();
                     return ;
                 }
-                while (myReader.hasNextLine()) {
-                    data = myReader.nextLine();
-                    AircraftFactory aircrafFactory = new AircraftFactory();
-                    if (isLineValid(data)) {
-                        String[] sdata = data.split(" ");
-                        aircrafFactory.newAircraft(sdata[0], sdata[1], Integer.parseInt(sdata[2]), Integer.parseInt(sdata[3]), Integer.parseInt(sdata[4]));
-                        // System.out.println("lol: " + data);
-                    }
-                }
+                readLines(myReader);
             }
             myReader.close();
         } catch (FileNotFoundException e) {
