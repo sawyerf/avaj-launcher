@@ -9,7 +9,7 @@ public class Coordinates {
         longitude = lon;
         latitude  = lat;
         height    = hei;
-        System.out.println("Coordinates: " + longitude + " " + latitude + " " + height);
+        // System.out.println("Coordinates: " + longitude + " " + latitude + " " + height);
     }
 
     public int getLongitude() {

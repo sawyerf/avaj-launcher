@@ -8,7 +8,7 @@ import Flyable.Flyable;
 
 public class AircraftFactory {
     public Flyable newAircraft(String type, String name, int longitude, int latitude, int height) {
-        System.out.println("NewAircraft: " + type + ": " + name);
+        // System.out.println("NewAircraft: " + type + ": " + name);
         Coordinates coord = new Coordinates(longitude, latitude, height);
         if (type.equals("Helicopter")) {
             return (new Helicopter(name, coord));

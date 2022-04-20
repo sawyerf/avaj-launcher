@@ -10,6 +10,8 @@ import Airport.AircraftFactory;
 
 import Flyable.Flyable;
 
+import Weather.WeatherTower;
+
 public class Main {
     private static Boolean isLineValid(String line) {
         return (Pattern.compile("^.+ .+ [0-9]+ [0-9]+ [0-9]+$", Pattern.CASE_INSENSITIVE)
@@ -18,16 +20,15 @@ public class Main {
     }
 
     private static void readLines(Scanner myReader) {
-        List<Flyable> flyables = new ArrayList<Flyable>();
-        
+        WeatherTower weatherTower = new WeatherTower();
+
         while (myReader.hasNextLine()) {
             String data = myReader.nextLine();
             AircraftFactory aircrafFactory = new AircraftFactory();
             if (isLineValid(data)) {
                 String[] sdata = data.split(" ");
-                flyables.add(
-                    aircrafFactory.newAircraft(sdata[0], sdata[1], Integer.parseInt(sdata[2]), Integer.parseInt(sdata[3]), Integer.parseInt(sdata[4]))
-                );
+                Flyable flyable = aircrafFactory.newAircraft(sdata[0], sdata[1], Integer.parseInt(sdata[2]), Integer.parseInt(sdata[3]), Integer.parseInt(sdata[4]));
+                flyable.registerTower(weatherTower);
             }
         }
     }
