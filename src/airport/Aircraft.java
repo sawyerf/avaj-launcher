@@ -1,6 +1,6 @@
-package Airport;
+package airport;
 
-import Weather.Coordinates;
+import weather.Coordinates;
 
 public class Aircraft {
     protected long id;

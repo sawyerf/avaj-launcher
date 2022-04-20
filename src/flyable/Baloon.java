@@ -1,8 +1,8 @@
-package Flyable;
+package flyable;
 
-import Weather.WeatherTower;
-import Weather.Coordinates;
-import Airport.Aircraft;
+import weather.WeatherTower;
+import weather.Coordinates;
+import airport.Aircraft;
 
 public class Baloon extends Aircraft implements Flyable {
     private WeatherTower weatherTower;

@@ -5,16 +5,16 @@ JC =		javac
 SRC_DIR =	src
 
 SRC_FILE =	Main.java                    \
-			Airport/Aircraft.java        \
-			Airport/AircraftFactory.java \
-			Flyable/Flyable.java         \
-			Flyable/Helicopter.java      \
-			Flyable/JetPlane.java        \
-			Flyable/Baloon.java          \
-			Weather/Tower.java           \
-			Weather/WeatherTower.java    \
-			Weather/WeatherProvider.java \
-			Weather/Coordinates.java
+			airport/Aircraft.java        \
+			airport/AircraftFactory.java \
+			flyable/Flyable.java         \
+			flyable/Helicopter.java      \
+			flyable/JetPlane.java        \
+			flyable/Baloon.java          \
+			weather/Tower.java           \
+			weather/WeatherTower.java    \
+			weather/WeatherProvider.java \
+			weather/Coordinates.java
 
 CLS_DIR  = .class
 CLS_FILE = $(SRC_FILE:.java=.class)

@@ -6,11 +6,11 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import Airport.AircraftFactory;
+import airport.AircraftFactory;
 
-import Flyable.Flyable;
+import flyable.Flyable;
 
-import Weather.WeatherTower;
+import weather.WeatherTower;
 
 public class Main {
     private static Boolean isLineValid(String line) {

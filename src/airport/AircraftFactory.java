@@ -1,10 +1,10 @@
-package Airport;
+package airport;
 
-import Weather.Coordinates;
-import Flyable.Helicopter;
-import Flyable.JetPlane;
-import Flyable.Baloon;
-import Flyable.Flyable;
+import weather.Coordinates;
+import flyable.Helicopter;
+import flyable.JetPlane;
+import flyable.Baloon;
+import flyable.Flyable;
 
 public class AircraftFactory {
     public Flyable newAircraft(String type, String name, int longitude, int latitude, int height) {
