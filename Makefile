@@ -37,7 +37,7 @@ run: $(NAME)
 	java -cp $(CLS_DIR) Main test.txt
 
 clean:
-	@rm -rf $(CLS)
+	@rm -rf $(CLS_DIR)
 	@printf "\033[0;31m[$(NAME)] Deleted *.class\033[0;0m\n"
 
 fclean: clean

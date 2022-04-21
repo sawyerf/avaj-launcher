@@ -1,18 +1,28 @@
 package weather;
 
+import java.lang.Math;
+
 public class WeatherProvider {
-    private WeatherProvider weatherProvider;
-    private String weather;
+    private final static WeatherProvider weatherProvider = new WeatherProvider();
+    private final static String[] weather = {
+        "RAIN",
+        "FOG",
+        "SUN",
+        "SNOW"
+    };
 
-    private WeatherProvider() {
+    private WeatherProvider() {}
 
-    }
-
-    public WeatherProvider getProvider() { 
-        return (this);
+    public static WeatherProvider getProvider() { 
+        return (weatherProvider);
     }
 
     public String getCurrentWeather(Coordinates coordinates) {
-        return weather;
+        double dindex = 0;
+        dindex += coordinates.getLatitude() * Math.random();
+        dindex += coordinates.getLongitude() * Math.random();
+        dindex += coordinates.getHeight() * Math.random();
+        int index = (int)dindex % 4;
+        return weather[index];
     }
 }

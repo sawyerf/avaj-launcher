@@ -6,6 +6,8 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.swing.RepaintManager;
+
 import airport.AircraftFactory;
 
 import flyable.Flyable;
@@ -19,7 +21,7 @@ public class Main {
             .find());
     }
 
-    private static void readLines(Scanner myReader) {
+    private static WeatherTower readLines(Scanner myReader) {
         WeatherTower weatherTower = new WeatherTower();
 
         while (myReader.hasNextLine()) {
@@ -29,8 +31,12 @@ public class Main {
                 String[] sdata = data.split(" ");
                 Flyable flyable = aircrafFactory.newAircraft(sdata[0], sdata[1], Integer.parseInt(sdata[2]), Integer.parseInt(sdata[3]), Integer.parseInt(sdata[4]));
                 flyable.registerTower(weatherTower);
+            } else {
+                System.out.println("Wrong line: `" + data + "`");
+                return (null);
             }
         }
+        return (weatherTower);
     }
 
     private static void readFile(String fileName) {
@@ -40,15 +46,20 @@ public class Main {
             Scanner myReader = new Scanner(myObj);
             if (myReader.hasNextLine()) {
                 data = myReader.nextLine();
+                int repeat;
                 try {
-                    int lol = Integer.parseInt(data);
-                    System.out.println(lol);
+                    repeat = Integer.parseInt(data);
+                    System.out.println(repeat);
                 } catch (NumberFormatException e){
                     System.out.println("Fail to parse file");
                     myReader.close();
                     return ;
                 }
-                readLines(myReader);
+                WeatherTower weatherTower = readLines(myReader);
+                for (int i = 0; i < repeat; i++) {
+                    System.out.println("Repeat: " + i);
+                    weatherTower.changeWeather();
+                }
             }
             myReader.close();
         } catch (FileNotFoundException e) {
