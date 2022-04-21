@@ -18,7 +18,21 @@ public class Baloon extends Aircraft implements Flyable {
             weatherTower.unregister(this);
             System.out.println("Tower says: " + TYPE + "#" + super.name + "(" + super.id + ") unregistered from weather tower.");
         } else {
-            System.out.println(TYPE + "#" + super.name + "(" + super.id + "): " + weather + "(" + super.coordinates.getLongitude() + "," + super.coordinates.getLatitude() + "," + super.coordinates.getHeight() + ")");
+            // System.out.println(TYPE + "#" + super.name + "(" + super.id + "): " + weather + "(" + super.coordinates.getLongitude() + "," + super.coordinates.getLatitude() + "," + super.coordinates.getHeight() + ")");
+            switch (weather) {
+                case "SUN":
+                    System.out.println(TYPE + "#" + super.name + "(" + super.id + "): Let's enjoy the good weather and take some pics.");
+                    break;
+                case "RAIN":
+                    System.out.println(TYPE + "#" + super.name + "(" + super.id + "): Damn you rain! You messed up my baloon.");
+                    break;
+                case "FOG":
+                    System.out.println(TYPE + "#" + super.name + "(" + super.id + "): I can't see my own hand.");
+                    break;
+                case "SNOW":
+                    System.out.println(TYPE + "#" + super.name + "(" + super.id + "): It's snowing. We're gonna crash.");
+                    break;
+            }
         }
     }
 
