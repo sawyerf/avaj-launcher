@@ -12,22 +12,34 @@ public class JetPlane extends Aircraft implements Flyable {
         super(name, coordinates);
     }
 
+    private void checkCoord(Coordinates coord, String weather) {
+        if (coord.getHeight() == 0) {
+            System.out.println(TYPE + "#" + super.name + "(" + super.id + "): Crash");
+            weatherTower.unregister(this);
+            System.out.println("Tower says: " + TYPE + "#" + super.name + "(" + super.id + ") unregistered from weather tower.");
+        } else {
+            System.out.println(TYPE + "#" + super.name + "(" + super.id + "): " + weather + "(" + super.coordinates.getLongitude() + "," + super.coordinates.getLatitude() + "," + super.coordinates.getHeight() + ")");
+        }
+    }
+
     public void updateConditions() {
         String weather = weatherTower.getWeather(super.coordinates);
         switch (weather) {
+            case "SUN":
+                super.coordinates.upLatitude(10);
+                super.coordinates.upHeight(2);
+                break;
             case "RAIN":
-                System.out.println(TYPE + "#" + super.name + "(" + super.id + "): " + weather);
+                super.coordinates.upLatitude(5);
                 break;
             case "FOG":
-                System.out.println(TYPE + "#" + super.name + "(" + super.id + "): " + weather);
-                break;
-            case "SUN":
-                System.out.println(TYPE + "#" + super.name + "(" + super.id + "): " + weather);
+                super.coordinates.upLatitude(1);
                 break;
             case "SNOW":
-                System.out.println(TYPE + "#" + super.name + "(" + super.id + "): " + weather);
+                super.coordinates.downHeight(7);
                 break;
         }
+        checkCoord(super.coordinates, weather);
     }
 
     public void registerTower(WeatherTower weatherTower) {

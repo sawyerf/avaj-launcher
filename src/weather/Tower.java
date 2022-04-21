@@ -17,7 +17,7 @@ public class Tower {
     }
 
     protected void conditionsChanged() {
-        for (Flyable obs : observers) {
+        for (Flyable obs : new ArrayList<Flyable>(observers)) {
             obs.updateConditions();
         }
     }
