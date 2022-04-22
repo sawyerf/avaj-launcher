@@ -53,7 +53,7 @@ public class Main {
             File myObj = new File(fileName);
             return new Scanner(myObj);
         } catch (FileNotFoundException e) {
-            System.out.println("An error occurred.");
+            System.out.println("Fail to open file.");
             // e.printStackTrace();
             return null;
         }
@@ -71,7 +71,6 @@ public class Main {
                 System.out.println("Error in parsing file: Line 1: `" + data + "`");
             } else {
                 repeat = Integer.parseInt(data);
-                // System.out.println(repeat);
                 WeatherTower weatherTower = readLines(myReader);
                 
                 if (weatherTower == null) return ;
