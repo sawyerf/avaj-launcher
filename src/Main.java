@@ -49,15 +49,17 @@ public class Main {
                 int repeat;
                 try {
                     repeat = Integer.parseInt(data);
-                    System.out.println(repeat);
+                    // System.out.println(repeat);
                 } catch (NumberFormatException e){
                     System.out.println("Fail to parse file");
                     myReader.close();
                     return ;
                 }
                 WeatherTower weatherTower = readLines(myReader);
-                for (int i = 0; i < repeat; i++) {
-                    System.out.println("Repeat: " + i);
+                for (int i = 1; i <= repeat; i++) {
+                    System.out.println("------------");
+                    System.out.println(" Repeat: " + i);
+                    System.out.println("------------");
                     weatherTower.changeWeather();
                 }
             }

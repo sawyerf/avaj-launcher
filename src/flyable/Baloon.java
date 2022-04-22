@@ -16,21 +16,21 @@ public class Baloon extends Aircraft implements Flyable {
         if (coord.getHeight() == 0) {
             System.out.println(TYPE + "#" + super.name + "(" + super.id + "): Crash");
             weatherTower.unregister(this);
-            System.out.println("Tower says: " + TYPE + "#" + super.name + "(" + super.id + ") unregistered from weather tower.");
+            System.out.println(COLOR_RED + "Tower says: " + TYPE + "#" + super.name + "(" + super.id + ") unregistered from weather tower." + COLOR_RESET);
         } else {
             // System.out.println(TYPE + "#" + super.name + "(" + super.id + "): " + weather + "(" + super.coordinates.getLongitude() + "," + super.coordinates.getLatitude() + "," + super.coordinates.getHeight() + ")");
             switch (weather) {
                 case "SUN":
-                    System.out.println(TYPE + "#" + super.name + "(" + super.id + "): Let's enjoy the good weather and take some pics.");
+                    System.out.println(TYPE + "#" + super.name + "(" + super.id + "): " + COLOR_YELLOW + "Let's enjoy the good weather and take some pics." + COLOR_RESET);
                     break;
                 case "RAIN":
-                    System.out.println(TYPE + "#" + super.name + "(" + super.id + "): Damn you rain! You messed up my baloon.");
+                    System.out.println(TYPE + "#" + super.name + "(" + super.id + "): " + COLOR_BLUE + "Damn you rain! You messed up my baloon." + COLOR_RESET);
                     break;
                 case "FOG":
-                    System.out.println(TYPE + "#" + super.name + "(" + super.id + "): I can't see my own hand.");
+                    System.out.println(TYPE + "#" + super.name + "(" + super.id + "): " + COLOR_GREY + "I can't see my own hand." + COLOR_RESET);
                     break;
                 case "SNOW":
-                    System.out.println(TYPE + "#" + super.name + "(" + super.id + "): It's snowing. We're gonna crash.");
+                    System.out.println(TYPE + "#" + super.name + "(" + super.id + "): " + COLOR_WHITE + "It's snowing. We're gonna crash." + COLOR_RESET);
                     break;
             }
         }

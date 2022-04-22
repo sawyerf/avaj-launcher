@@ -19,10 +19,10 @@ public class WeatherProvider {
 
     public String getCurrentWeather(Coordinates coordinates) {
         double dindex = 0;
-        dindex += coordinates.getLatitude() * Math.random();
-        dindex += coordinates.getLongitude() * Math.random();
-        dindex += coordinates.getHeight() * Math.random();
+        dindex += coordinates.getLatitude() * Math.random() + Math.random() * 10;
+        dindex += coordinates.getLongitude() * Math.random() + Math.random() * 10;
         int index = (int)dindex % 4;
+        // System.out.println(index);
         return weather[index];
     }
 }
