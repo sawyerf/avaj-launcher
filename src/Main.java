@@ -82,6 +82,7 @@ public class Main {
                     System.out.println("------------");
                     weatherTower.changeWeather();
                 }
+                weatherTower.closeLog();
             }
         } else {
             System.out.println("Error file is empty");

@@ -14,23 +14,23 @@ public class Helicopter extends Aircraft implements Flyable {
 
     private void checkCoord(Coordinates coord, String weather) {
         if (coord.getHeight() == 0) {
-            System.out.println(TYPE + "#" + super.name + "(" + super.id + ") Crash");
+            weatherTower.writeLog(TYPE + "#" + super.name + "(" + super.id + ") Crash");
             weatherTower.unregister(this);
-            System.out.println(COLOR_RED + "Tower says: " + TYPE + "#" + super.name + "(" + super.id + ") unregistered from weather tower." + COLOR_RESET);
+            weatherTower.writeLog(COLOR_RED + "Tower says: " + TYPE + "#" + super.name + "(" + super.id + ") unregistered from weather tower." + COLOR_RESET);
         } else {
-            // System.out.println(TYPE + "#" + super.name + "(" + super.id + "): " + weather + "(" + super.coordinates.getLongitude() + "," + super.coordinates.getLatitude() + "," + super.coordinates.getHeight() + ")");
+            // weatherTower.writeLog(TYPE + "#" + super.name + "(" + super.id + "): " + weather + "(" + super.coordinates.getLongitude() + "," + super.coordinates.getLatitude() + "," + super.coordinates.getHeight() + ")");
             switch (weather) {
                 case "SUN":
-                    System.out.println(TYPE + "#" + super.name + "(" + super.id + "): " + COLOR_YELLOW + "Let's enjoy the good weather and take some pics." + COLOR_RESET);
+                    weatherTower.writeLog(TYPE + "#" + super.name + "(" + super.id + "): " + COLOR_YELLOW + "Let's enjoy the good weather and take some pics." + COLOR_RESET);
                     break;
                 case "RAIN":
-                    System.out.println(TYPE + "#" + super.name + "(" + super.id + "): " + COLOR_BLUE + "It's raining. Better watch out for lightings." + COLOR_RESET);
+                    weatherTower.writeLog(TYPE + "#" + super.name + "(" + super.id + "): " + COLOR_BLUE + "It's raining. Better watch out for lightings." + COLOR_RESET);
                     break;
                 case "FOG":
-                    System.out.println(TYPE + "#" + super.name + "(" + super.id + "): " + COLOR_GREY + "I can't see my own hand." + COLOR_RESET);
+                    weatherTower.writeLog(TYPE + "#" + super.name + "(" + super.id + "): " + COLOR_GREY + "I can't see my own hand." + COLOR_RESET);
                     break;
                 case "SNOW":
-                    System.out.println(TYPE + "#" + super.name + "(" + super.id + "): " + COLOR_WHITE + "My rotor is going to freeze!" + COLOR_RESET);
+                    weatherTower.writeLog(TYPE + "#" + super.name + "(" + super.id + "): " + COLOR_WHITE + "My rotor is going to freeze!" + COLOR_RESET);
                     break;
             }
         }
@@ -59,7 +59,7 @@ public class Helicopter extends Aircraft implements Flyable {
     public void registerTower(WeatherTower weatherTower) {
         this.weatherTower = weatherTower;
         weatherTower.register(this);
-        System.out.println(
+        weatherTower.writeLog(
                 "Tower says: Helicopter" + "#" + super.name + "(" + super.id + ") registered to weather tower.");
     }
 }

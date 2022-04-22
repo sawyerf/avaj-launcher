@@ -7,7 +7,7 @@ public class Aircraft {
     protected String name;
     protected Coordinates coordinates;
 
-    protected static final String COLOR_RESET = "\033[0m ";
+    protected static final String COLOR_RESET = "\033[0m";
     protected final static String COLOR_BLUE = "\033[0;34m🌧️";
     protected final static String COLOR_YELLOW = "\033[0;33m☀️";
     protected final static String COLOR_GREY = "\033[1;33m🌫️";
