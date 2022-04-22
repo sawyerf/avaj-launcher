@@ -16,58 +16,77 @@ import weather.WeatherTower;
 
 public class Main {
     private static Boolean isLineValid(String line) {
-        return (Pattern.compile("^.+ .+ [0-9]+ [0-9]+ [0-9]+$", Pattern.CASE_INSENSITIVE)
+        return (Pattern.compile("^[A-Za-z]+ [A-Za-z0-9]+ [0-9]+ [0-9]+ [0-9]+$", Pattern.CASE_INSENSITIVE)
+            .matcher(line)
+            .find());
+    }
+
+    private static Boolean isFirstLineValid(String line) {
+        return (Pattern.compile("^[0-9]{1,5}$", Pattern.CASE_INSENSITIVE)
             .matcher(line)
             .find());
     }
 
     private static WeatherTower readLines(Scanner myReader) {
         WeatherTower weatherTower = new WeatherTower();
+        int lineCount = 1;
 
         while (myReader.hasNextLine()) {
             String data = myReader.nextLine();
             AircraftFactory aircrafFactory = new AircraftFactory();
+
+            lineCount++;
             if (isLineValid(data)) {
                 String[] sdata = data.split(" ");
                 Flyable flyable = aircrafFactory.newAircraft(sdata[0], sdata[1], Integer.parseInt(sdata[2]), Integer.parseInt(sdata[3]), Integer.parseInt(sdata[4]));
                 flyable.registerTower(weatherTower);
             } else {
-                System.out.println("Wrong line: `" + data + "`");
+                System.out.println("Error in parsing file: Line " + lineCount + ": `" + data + "`");
                 return (null);
             }
         }
         return (weatherTower);
     }
 
-    private static void readFile(String fileName) {
-        String data;
+    private static Scanner openFile(String fileName){
         try {
             File myObj = new File(fileName);
-            Scanner myReader = new Scanner(myObj);
-            if (myReader.hasNextLine()) {
-                data = myReader.nextLine();
-                int repeat;
-                try {
-                    repeat = Integer.parseInt(data);
-                    // System.out.println(repeat);
-                } catch (NumberFormatException e){
-                    System.out.println("Fail to parse file");
-                    myReader.close();
-                    return ;
-                }
+            return new Scanner(myObj);
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            // e.printStackTrace();
+            return null;
+        }
+    }
+
+    private static void readFile(String fileName) {
+        Scanner myReader = openFile(fileName);
+        String data;
+
+        if (myReader == null) return ;
+        if (myReader.hasNextLine()) {
+            data = myReader.nextLine();
+            int repeat;
+            if (!isFirstLineValid(data)) {
+                System.out.println("Error in parsing file: Line 1: `" + data + "`");
+            } else {
+                repeat = Integer.parseInt(data);
+                // System.out.println(repeat);
                 WeatherTower weatherTower = readLines(myReader);
+                
+                if (weatherTower == null) return ;
                 for (int i = 1; i <= repeat; i++) {
+                    if (weatherTower.isEmpty()) return ;
                     System.out.println("------------");
                     System.out.println(" Repeat: " + i);
                     System.out.println("------------");
                     weatherTower.changeWeather();
                 }
             }
-            myReader.close();
-        } catch (FileNotFoundException e) {
-            System.out.println("An error occurred.");
-            // e.printStackTrace();
+        } else {
+            System.out.println("Error file is empty");
         }
+        myReader.close();
     }
 
     public static void main(String[] args) {

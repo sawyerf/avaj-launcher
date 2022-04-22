@@ -16,6 +16,10 @@ public class Tower {
         observers.remove(flyable);
     }
 
+    public Boolean isEmpty() {
+        return (observers.size() == 0);
+    }
+
     protected void conditionsChanged() {
         for (Flyable obs : new ArrayList<Flyable>(observers)) {
             obs.updateConditions();
