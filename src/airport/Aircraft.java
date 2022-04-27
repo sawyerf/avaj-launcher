@@ -8,10 +8,10 @@ public class Aircraft {
     protected Coordinates coordinates;
 
     protected static final String COLOR_RESET = "\033[0m";
-    protected final static String COLOR_BLUE = "\033[0;34m🌧️";
-    protected final static String COLOR_YELLOW = "\033[0;33m☀️";
-    protected final static String COLOR_GREY = "\033[1;33m🌫️";
-    protected final static String COLOR_WHITE = "\033[0;37m❄️";
+    protected final static String COLOR_BLUE = "\033[0;34m🌧️ ";
+    protected final static String COLOR_YELLOW = "\033[0;33m☀️ ";
+    protected final static String COLOR_GREY = "\033[1;30m🌫️ ";
+    protected final static String COLOR_WHITE = "\033[1;37m❄️ ";
     protected final static String COLOR_RED = "\033[0;31m";
 
     private static long idCounter = 0;

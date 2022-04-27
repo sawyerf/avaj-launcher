@@ -16,9 +16,8 @@ public class Baloon extends Aircraft implements Flyable {
         if (coord.getHeight() == 0) {
             weatherTower.writeLog(TYPE + "#" + super.name + "(" + super.id + "): Crash");
             weatherTower.unregister(this);
-            weatherTower.writeLog(COLOR_RED + "Tower says: " + TYPE + "#" + super.name + "(" + super.id + ") unregistered from weather tower." + COLOR_RESET);
+            weatherTower.writeLog(COLOR_RED + "Tower says: " + TYPE + "#" + super.name + "(" + super.id + ")(" + super.coordinates.getLongitude() + "," + super.coordinates.getLatitude() + "," + super.coordinates.getHeight() + ") unregistered from weather tower." + COLOR_RESET);
         } else {
-            // weatherTower.writeLog(TYPE + "#" + super.name + "(" + super.id + "): " + weather + "(" + super.coordinates.getLongitude() + "," + super.coordinates.getLatitude() + "," + super.coordinates.getHeight() + ")");
             switch (weather) {
                 case "SUN":
                     weatherTower.writeLog(TYPE + "#" + super.name + "(" + super.id + "): " + COLOR_YELLOW + "Let's enjoy the good weather and take some pics." + COLOR_RESET);

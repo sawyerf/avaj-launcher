@@ -54,7 +54,6 @@ public class Main {
             return new Scanner(myObj);
         } catch (FileNotFoundException e) {
             System.out.println("Fail to open file.");
-            // e.printStackTrace();
             return null;
         }
     }

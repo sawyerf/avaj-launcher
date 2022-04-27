@@ -13,7 +13,6 @@ public class Coordinates {
         if (height < 0) height = 0;
         if (longitude < 0) longitude = 100;
         if (latitude < 0) latitude = 100;
-        // System.out.println("Coordinates: " + longitude + " " + latitude + " " + height);
     }
 
     public int getLongitude() {

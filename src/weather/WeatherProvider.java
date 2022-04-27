@@ -22,7 +22,6 @@ public class WeatherProvider {
         dindex += coordinates.getLatitude() * Math.random() + Math.random() * 10;
         dindex += coordinates.getLongitude() * Math.random() + Math.random() * 10;
         int index = (int)dindex % 4;
-        // System.out.println(index);
         return weather[index];
     }
 }
