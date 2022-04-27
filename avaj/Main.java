@@ -1,18 +1,17 @@
+package avaj;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.*;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import javax.swing.RepaintManager;
 
-import airport.AircraftFactory;
+import avaj.weather.WeatherTower;
+import avaj.airport.AircraftFactory;
+import avaj.flyable.Flyable;
 
-import flyable.Flyable;
-
-import weather.WeatherTower;
 
 public class Main {
     private static Boolean isLineValid(String line) {

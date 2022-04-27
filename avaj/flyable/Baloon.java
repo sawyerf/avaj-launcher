@@ -1,8 +1,8 @@
-package flyable;
+package avaj.flyable;
 
-import weather.WeatherTower;
-import weather.Coordinates;
-import airport.Aircraft;
+import avaj.weather.WeatherTower;
+import avaj.weather.Coordinates;
+import avaj.airport.Aircraft;
 
 public class Baloon extends Aircraft implements Flyable {
     private final static String TYPE = "Baloon";

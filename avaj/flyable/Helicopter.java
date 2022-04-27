@@ -1,20 +1,20 @@
-package flyable;
+package avaj.flyable;
 
-import weather.WeatherTower;
-import weather.Coordinates;
-import airport.Aircraft;
+import avaj.weather.WeatherTower;
+import avaj.weather.Coordinates;
+import avaj.airport.Aircraft;
 
-public class JetPlane extends Aircraft implements Flyable {
-    private final static String TYPE = "JetPlane";
+public class Helicopter extends Aircraft implements Flyable {
+    private final static String TYPE = "Helicopter";
     private WeatherTower weatherTower;
 
-    public JetPlane(String name, Coordinates coordinates) {
+    public Helicopter(String name, Coordinates coordinates) {
         super(name, coordinates);
     }
 
     private void checkCoord(Coordinates coord, String weather) {
         if (coord.getHeight() == 0) {
-            weatherTower.writeLog(TYPE + "#" + super.name + "(" + super.id + "): Crash");
+            weatherTower.writeLog(TYPE + "#" + super.name + "(" + super.id + ") Crash");
             weatherTower.unregister(this);
             weatherTower.writeLog(COLOR_RED + "Tower says: " + TYPE + "#" + super.name + "(" + super.id + ")(" + super.coordinates.getLongitude() + "," + super.coordinates.getLatitude() + "," + super.coordinates.getHeight() + ") unregistered from weather tower." + COLOR_RESET);
         } else {
@@ -29,7 +29,7 @@ public class JetPlane extends Aircraft implements Flyable {
                     weatherTower.writeLog(TYPE + "#" + super.name + "(" + super.id + "): " + COLOR_GREY + "I can't see my own hand." + COLOR_RESET);
                     break;
                 case "SNOW":
-                    weatherTower.writeLog(TYPE + "#" + super.name + "(" + super.id + "): " + COLOR_WHITE + "OMG! Winter is coming!" + COLOR_RESET);
+                    weatherTower.writeLog(TYPE + "#" + super.name + "(" + super.id + "): " + COLOR_WHITE + "My rotor is going to freeze!" + COLOR_RESET);
                     break;
             }
         }
@@ -39,17 +39,17 @@ public class JetPlane extends Aircraft implements Flyable {
         String weather = weatherTower.getWeather(super.coordinates);
         switch (weather) {
             case "SUN":
-                super.coordinates.upLatitude(10);
+                super.coordinates.upLongitude(10);
                 super.coordinates.upHeight(2);
                 break;
             case "RAIN":
-                super.coordinates.upLatitude(5);
+                super.coordinates.upLongitude(5);
                 break;
             case "FOG":
-                super.coordinates.upLatitude(1);
+                super.coordinates.upLongitude(1);
                 break;
             case "SNOW":
-                super.coordinates.downHeight(7);
+                super.coordinates.downHeight(12);
                 break;
         }
         checkCoord(super.coordinates, weather);

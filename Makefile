@@ -2,7 +2,7 @@ NAME =		ajav_launcher
 
 JC =		javac
 
-SRC_DIR =	src
+SRC_DIR =	avaj
 
 SRC_FILE =	Main.java                    \
 			airport/Aircraft.java        \
@@ -23,24 +23,28 @@ JFLAGS =
 
 SRC = 		$(addprefix $(SRC_DIR)/,$(SRC_FILE))
 CLS = 		$(addprefix $(CLS_DIR)/,$(CLS_FILE))
+CLSS =		$(addprefix $(SRC_DIR)/,$(CLS_FILE))
 
 all: $(NAME)
 
 $(CLS_DIR)/%.class: $(SRC_DIR)/%.java
 	@$(JC) -sourcepath $(SRC_DIR) -cp $(CLS_DIR) -d $(CLS_DIR) $<
 
-$(NAME): $(CLS)
-	@mkdir $(CLS_DIR) 2> /dev/null || true
+$(NAME):
+	find * -name "*.java" > sources.txt
+	javac @sources.txt
 	@printf "\033[0;32m[$(NAME)] Compilation [OK]\033[0;0m\n"
 
+
 run: $(NAME)
-	java -cp $(CLS_DIR) Main test.txt
+	java avaj.Main test.txt
 
 clean:
-	@rm -rf $(CLS_DIR)
+	@rm -rf $(CLS_DIR) $(CLSS)
 	@printf "\033[0;31m[$(NAME)] Deleted *.class\033[0;0m\n"
 
 fclean: clean
+	@rm -rf simulation.txt sources.txt 2>&-
 
 re: fclean all
 

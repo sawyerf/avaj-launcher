@@ -1,8 +1,8 @@
-package weather;
+package avaj.weather;
 
-import weather.WeatherProvider;
 import java.io.FileWriter;
 import java.io.IOException;
+import avaj.weather.WeatherProvider;
 
 public class WeatherTower extends Tower {
     private static FileWriter fWriter = openLogFile();

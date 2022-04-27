@@ -1,6 +1,6 @@
-package airport;
+package avaj.airport;
 
-import weather.Coordinates;
+import avaj.weather.Coordinates;
 
 public class Aircraft {
     protected long id;

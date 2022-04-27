@@ -1,6 +1,6 @@
-package flyable;
+package avaj.flyable;
 
-import weather.WeatherTower;
+import avaj.weather.WeatherTower;
 
 public interface Flyable {
     void updateConditions();

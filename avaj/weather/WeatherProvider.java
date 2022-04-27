@@ -1,4 +1,4 @@
-package weather;
+package avaj.weather;
 
 import java.lang.Math;
 
