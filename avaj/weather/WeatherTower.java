@@ -28,8 +28,8 @@ public class WeatherTower extends Tower {
     }
 
     public void writeLog(String log) {
-        if (fWriter == null) return ;
         System.out.println(log);
+        if (fWriter == null) return ;
         try {
             fWriter.write(log + "\n");
         } catch (IOException e) {
@@ -38,6 +38,7 @@ public class WeatherTower extends Tower {
     }
 
     public void closeLog() {
+        if (fWriter == null) return ;
         try {
             fWriter.close();
         } catch (IOException e) {
