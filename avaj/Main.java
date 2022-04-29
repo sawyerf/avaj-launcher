@@ -73,7 +73,7 @@ public class Main {
                 
                 if (weatherTower == null) return ;
                 for (int i = 1; i <= repeat; i++) {
-                    if (weatherTower.isEmpty()) return ;
+                    if (weatherTower.isEmpty()) break ;
                     System.out.println("------------");
                     System.out.println(" Repeat: " + i);
                     System.out.println("------------");
