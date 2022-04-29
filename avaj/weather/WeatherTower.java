@@ -22,7 +22,7 @@ public class WeatherTower extends Tower {
         try {
             return (new FileWriter("simulation.txt"));
         } catch (IOException e) {
-            System.out.println("Error fail to open log file");
+            System.err.println("Error fail to open log file");
             return (null);
         }
     }

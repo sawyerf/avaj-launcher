@@ -40,7 +40,7 @@ public class Main {
                 Flyable flyable = aircrafFactory.newAircraft(sdata[0], sdata[1], Integer.parseInt(sdata[2]), Integer.parseInt(sdata[3]), Integer.parseInt(sdata[4]));
                 flyable.registerTower(weatherTower);
             } else {
-                System.out.println("Error in parsing file: Line " + lineCount + ": `" + data + "`");
+                System.err.println("Error in parsing file: Line " + lineCount + ": `" + data + "`");
                 return (null);
             }
         }
@@ -52,7 +52,7 @@ public class Main {
             File myObj = new File(fileName);
             return new Scanner(myObj);
         } catch (FileNotFoundException e) {
-            System.out.println("Fail to open file.");
+            System.err.println("Fail to open file.");
             return null;
         }
     }
@@ -66,7 +66,7 @@ public class Main {
             data = myReader.nextLine();
             int repeat;
             if (!isFirstLineValid(data)) {
-                System.out.println("Error in parsing file: Line 1: `" + data + "`");
+                System.err.println("Error in parsing file: Line 1: `" + data + "`");
             } else {
                 repeat = Integer.parseInt(data);
                 WeatherTower weatherTower = readLines(myReader);
@@ -82,7 +82,7 @@ public class Main {
                 weatherTower.closeLog();
             }
         } else {
-            System.out.println("Error file is empty");
+            System.err.println("Error file is empty");
         }
         myReader.close();
     }
