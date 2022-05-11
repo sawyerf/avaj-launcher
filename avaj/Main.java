@@ -15,7 +15,7 @@ import avaj.flyable.Flyable;
 
 public class Main {
     private static Boolean isLineValid(String line) {
-        return (Pattern.compile("^[A-Za-z]+ [A-Za-z0-9]+ [0-9]+ [0-9]+ [0-9]+$", Pattern.CASE_INSENSITIVE)
+        return (Pattern.compile("^[A-Za-z]+ [A-Za-z0-9]+ [0-9]+ [0-9]+ [0-9]{1,3}$", Pattern.CASE_INSENSITIVE)
             .matcher(line)
             .find());
     }
@@ -37,7 +37,16 @@ public class Main {
             lineCount++;
             if (isLineValid(data)) {
                 String[] sdata = data.split(" ");
-                Flyable flyable = aircrafFactory.newAircraft(sdata[0], sdata[1], Integer.parseInt(sdata[2]), Integer.parseInt(sdata[3]), Integer.parseInt(sdata[4]));
+                Flyable flyable;
+                try {
+                    flyable = aircrafFactory.newAircraft(sdata[0], sdata[1], Integer.parseInt(sdata[2]), Integer.parseInt(sdata[3]), Integer.parseInt(sdata[4]));
+                } catch (NumberFormatException nfe) {
+                    System.err.println("Error converting integer: Line " + lineCount + ": `" + data + "`");
+                }
+                if (flyable == null) {
+                    System.err.println("Can't create flyable: Line " + lineCount + ": `" + data + "`")
+                    return (null)
+                }
                 flyable.registerTower(weatherTower);
             } else {
                 System.err.println("Error in parsing file: Line " + lineCount + ": `" + data + "`");
