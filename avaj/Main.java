@@ -42,10 +42,11 @@ public class Main {
                     flyable = aircrafFactory.newAircraft(sdata[0], sdata[1], Integer.parseInt(sdata[2]), Integer.parseInt(sdata[3]), Integer.parseInt(sdata[4]));
                 } catch (NumberFormatException nfe) {
                     System.err.println("Error converting integer: Line " + lineCount + ": `" + data + "`");
+                    return (null);
                 }
                 if (flyable == null) {
-                    System.err.println("Can't create flyable: Line " + lineCount + ": `" + data + "`")
-                    return (null)
+                    System.err.println("Can't create flyable: Line " + lineCount + ": `" + data + "`");
+                    return (null);
                 }
                 flyable.registerTower(weatherTower);
             } else {

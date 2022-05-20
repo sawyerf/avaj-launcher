@@ -29,10 +29,12 @@ public class Coordinates {
 
     public void upLongitude(int up) {
         longitude += up;
+        if (longitude < 0) longitude = 0;
     }
 
     public void upLatitude(int up) {
         latitude += up;
+        if (latitude < 0) latitude = 0;
     }
 
     public void upHeight(int up) {
