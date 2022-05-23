@@ -11,8 +11,8 @@ public class Coordinates {
         height    = hei;
         if (height > 100) height = 100;
         if (height < 0) height = 0;
-        if (longitude < 0) longitude = 100;
-        if (latitude < 0) latitude = 100;
+        if (longitude < 0) longitude = 0;
+        if (latitude < 0) latitude = 0;
     }
 
     public int getLongitude() {

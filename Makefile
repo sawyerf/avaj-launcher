@@ -37,7 +37,7 @@ $(NAME):
 
 
 run: $(NAME)
-	java avaj.Main test.txt
+	java avaj.Main scenario.txt
 
 clean:
 	@rm -rf $(CLS_DIR) $(CLSS)
